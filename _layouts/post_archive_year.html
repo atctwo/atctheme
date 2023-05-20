@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+<h1>Archive of posts from {{ page.date | date: "%Y" }}</h1>
+
+<a class="btn btn-primary" href="/posts/tags/">Back to tags</a><br><br>
+
+{% include posts.html posts=page.posts %}

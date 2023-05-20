@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<a class="btn btn-primary" href="/posts/tags/">View all tags</a><br><br>
+
+{% include posts.html posts=paginator.posts %}
+
+{% assign list_url = "/posts/tags/" | append: page.autopages.display_name | append: "/" %}
+{% include paginator_nav.html paginator=paginator list_url=list_url %}

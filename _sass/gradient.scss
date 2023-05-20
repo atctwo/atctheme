@@ -1,0 +1,17 @@
+.animated-gradient {
+    // background-color: darkcyan;
+    background-size: 400% 400%;
+    animation: AnimatedHeaderGradient 250s ease infinite;
+}
+
+@media (prefers-reduced-motion) {
+    .animated-gradient {
+        animation-duration: 500s;
+    }
+}
+
+@keyframes AnimatedHeaderGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

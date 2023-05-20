@@ -1,0 +1,23 @@
+<div style="display: flex; width: 100%; justify-content: center;">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item {%if include.paginator.page==1%}disabled{%endif%}">
+                <a class="page-link" href="{{include.paginator.previous_page_path}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            {% for i in (1..include.paginator.total_pages) %}
+            <li class="page-item {%if include.paginator.page==i%}active{%endif%}" {%if include.paginator.page==i%}aria-current="page"{%endif%}>
+                <a class="page-link" {%if i==1%}href="{{include.list_url}}"{%else%}href="{{include.list_url}}{{i}}"{%endif%}>{{i}}</a>
+            </li>
+            {% endfor %}
+
+            <li class="page-item {%if include.paginator.page==include.paginator.total_pages%}disabled{%endif%}">
+                <a class="page-link" href="{{include.paginator.next_page_path}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

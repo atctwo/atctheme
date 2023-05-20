@@ -1,0 +1,53 @@
+<div>
+    {% if include.posts.size == 0 %}
+
+        <p>There are no posts to show!</p>
+
+    {% else %}
+
+        {% for post in include.posts %}
+            {% if include.tag == nil or post.tags contains include.tag %}
+            <div>
+
+                <!-- <a href="{{post.url}}"> -->
+                    <div class="card mb-3" style="display: block; width: 100%;">
+
+                        <div class="row g-0" style="transform: rotate(0);">
+
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <div style="display: flex; align-items: center; column-gap: 5px;">
+                                        <h3 class="card-title" style="float:left">{{post.title}}</h3>
+                                        {% if post.draft %}
+                                            <span class="text-body-secondary" style="font-size: larger; margin-bottom: 8px;">(draft)</span>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- <span class="text-body-secondary">{{post.date | date_to_string}}</span><br> -->
+                                    <span class="card-text">{{post.excerpt}}</span>
+                                    <a href="{{post.url}}" class="stretched-link" aria-label="Link to post {{post.title}}"></a>
+                                </div>
+                            </div>
+
+                            {% if post.image %}
+                                <div class="col-md-3 p-3">
+                                    <img src="{{post.image}}" class="img-thumbnail">
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="row g-0">
+                            <div class="card-footer">
+                                <span class="text-body-secondary">{{post.date | date_to_string}} · Tags: {% for tag in post.tags %}<a href="/posts/tags/{{tag}}" aria-label="List of posts tagged {{tag}}">{{tag}}</a> {% endfor %}</span>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </a> -->
+                <br>
+
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>

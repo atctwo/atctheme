@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm animated-gradient" id="site-header" data-bs-theme="light">
+    <div class="container-sm">
+
+        <a href="/" class="header-link"><h2 id="site-header-brand" class="navbar-brand" onmouseenter="title_hover();" onmouseleave="title_unhover();">{{site.title}}</h2></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav" id="header-inner-nav">
+                {% for entry in site.data.header_entries %}
+                    <a class="nav-link {% if page.url == entry.href %} active {% endif %}" 
+                       href={{entry.href}} 
+                       {% if page.url == entry.href %} aria-current="page" {% endif %}
+                        >{{entry.name}}</a>
+                {% endfor %}
+
+                {% if site.theme_debug %}
+                <span class="navbar-text">
+                    You are here: {{page.url}}
+                </span>
+                {% endif %}
+
+                <div class="dropdown" id="header-colour-select-dropdown">
+                    <button class="btn dropdown-toggle" id="header-color-select-btn" type="button" data-bs-toggle="dropdown" data-bs-theme="light" aria-expanded="false" aria-label="Select Colour Mode">
+                        <i class="bi bi-brightness-alt-high-fill"></i>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li><h6 class="dropdown-header">Colour Mode</h6></li>
+                        <li><a class="dropdown-item" onclick="set_colour_mode('light');" href="#"><i class="bi bi-brightness-high-fill"></i> Light</a></li>
+                        <li><a class="dropdown-item" onclick="set_colour_mode('dark');" href="#"><i class="bi bi-moon-stars-fill"></i> Dark</a></li>
+                        <li><a class="dropdown-item" onclick="set_colour_mode('auto');" href="#"><i class="bi bi-brightness-alt-high-fill"></i> Automatic</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+{% if page.url != "/" %}
+    <script src="/assets/js/gradient.js"></script>
+    <script>
+        header_set_gradient("#site-header");
+    </script>
+{% else %}
+    <script>
+        document.getElementById("site-header").style.backgroundColor = "transparent";
+    </script>
+{% endif %}

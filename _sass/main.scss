@@ -1,0 +1,72 @@
+
+@import "user_style.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "gradient.scss";
+@import "links.scss";
+@import "fonts.scss";
+@import "home.scss";
+@import "egg.scss";
+
+html, body, #site-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+#site-main {
+    flex-grow: 1;
+}
+
+.container-sm img:not(.card-img-top) {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.post-table td {
+    padding-bottom: 2px;
+    padding-right: 10px;
+}
+
+// bootstrap override
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 960.1px,
+  xxl: 960.2px
+);
+
+#skip-to-main-content:focus {
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    top: 5px;
+    left: 5px;
+    z-index: 100000;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    // background-color: gray;
+    background-color: var(--bs-secondary-bg);
+    text-align: center;
+    font-size: larger;
+}
+
+pre.highlight {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+table.rouge-table {
+    font-size: 16px;
+    border-collapse: separate;
+    border-spacing: 15px 0px;
+    // margin-left: 5px;
+}
+
+td.rouge-gutter.gl {
+    text-align: right;
+    color: var(--bs-tertiary-color)
+}

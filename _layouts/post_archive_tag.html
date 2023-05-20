@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+<h1>Archive of posts with {{ page.type }} '{{ page.title }}'</h1>
+
+<a class="btn btn-primary" href="/posts/tags/">View all tags</a><br><br>
+
+{% include posts.html posts=page.posts %}

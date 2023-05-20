@@ -1,0 +1,31 @@
+a:link:not(.nav-link, .btn, .dropdown-item, .page-link), 
+a:visited:not(.nav-link, .btn, .dropdown-item, .page-link) {
+    text-decoration: none;
+    transition: color 0.1s;
+}
+
+[data-bs-theme="dark"] {
+    a:link:not(.nav-link, .btn, .dropdown-item, .page-link), 
+    a:visited:not(.nav-link, .btn, .dropdown-item, .page-link) {
+        text-decoration: none;
+        color: rgb(0, 180, 180);
+        transition: color 0.1s;
+    }
+
+    a:hover:not(.nav-link, .btn, .dropdown-item, .page-link) {
+        color: #00ced1;
+    }
+}
+
+[data-bs-theme="light"] {
+    a:link:not(.nav-link, .btn, .dropdown-item, .page-link), 
+    a:visited:not(.nav-link, .btn, .dropdown-item, .page-link) {
+        text-decoration: none;
+        color: rgb(0, 128, 128);
+        transition: color 0.1s;
+    }
+
+    a:hover:not(.nav-link, .btn, .dropdown-item, .page-link) {
+        color: #00ced1;
+    }
+}

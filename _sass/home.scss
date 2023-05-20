@@ -1,0 +1,26 @@
+
+#site-home {
+    display: block;
+    // color: green;
+}
+
+#home-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+    #home-page-header {
+        justify-content: center;
+    }
+}
+
+#home-page-title {
+    font-size: 100px;
+}
+
+#home-page-content {
+    font-size: 25px;
+}

@@ -1,0 +1,19 @@
+plugins:
+  - jekyll-archives
+  - jekyll-seo-tag
+  - jekyll-toc
+
+jekyll-archives:
+  enabled: all
+  layouts:
+    year: post_archive_year
+    month: post_archive_month
+    day: post_archive_day
+    tag: post_archive_tag
+    category: post_archive_tag
+  permalinks:
+    year: '/posts/:year/'
+    month: '/posts/:year/:month/'
+    day: '/posts/:year/:month/:day/'
+    tag: '/posts/tags/:name/'
+    category: '/posts/category/:name/'

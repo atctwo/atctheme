@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div id="site-home" data-bs-theme="light">
+
+    <div id="home-page-header">
+        <h1 data-bs-theme="light" id="home-page-title">{{ site.title }}</h1>
+        <img src="{{ site.atctheme.home_image }}" alt="{{ site.atctheme.home_image_alt }}" id="home-page-image">
+    </div>
+
+    <div id="home-page-content">
+        {{ content }}
+    </div>
+
+    <script src="/assets/js/gradient.js"></script>
+    <script>
+        header_set_gradient("body");
+    </script>
+
+</div>

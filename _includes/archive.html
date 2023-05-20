@@ -1,0 +1,21 @@
+{% if site.posts.size == 0 %}
+    <p>There are no posts to show!</p>
+{% else %}
+    <table class="post-table">
+        {% for post in site.posts %}
+            <tr>
+                <td>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </td>
+                <td class="text-body-tertiary">
+                    {{post.date | date_to_string}}
+                </td>
+                {% if post.draft %}
+                    <td class="text-body-tertiary">
+                        (draft)
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}

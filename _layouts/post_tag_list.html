@@ -11,7 +11,7 @@ layout: page
     <table class="post-table">
         {% for tag in site.tags %}
         <tr>
-            <td><a href="/posts/tags/{{tag[0]}}">{{tag[0]}}</a></td>
+            <td><a class="badge text-bg-secondary post-tag" href="/posts/tags/{{tag[0]}}">{{tag[0]}}</a></td>
             <td class="text-body-tertiary">({{tag[1].size}} posts)</td>
         </tr>
         {% endfor %}

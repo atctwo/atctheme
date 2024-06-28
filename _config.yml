@@ -1,3 +1,10 @@
+defaults:
+  - 
+    scope:
+      path: ""
+    values:
+      main_content_class: "container-sm"
+
 plugins:
   - jekyll-archives
   - jekyll-seo-tag

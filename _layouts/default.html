@@ -29,7 +29,11 @@
             <a id="skip-to-main-content" class="visually-hidden-focusable" href="#site-main">Skip to main content</a>
             {% include header.html %}
 
-            <div id="site-main" class="{{page.main_content_class}}">
+            {% if page.main_content_class %}
+                <div id="site-main" class="{{page.main_content_class}}">
+            {% else %}       
+                <div id="site-main" class="container-sm">
+            {% endif %}
                 {{content}}
             </div>
 

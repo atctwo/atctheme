@@ -29,6 +29,10 @@ html, body, #site-container {
     padding-right: 10px;
 }
 
+.post-details {
+    margin-bottom: 0.25em;
+}
+
 // bootstrap override
 $container-max-widths: (
   sm: 540px,

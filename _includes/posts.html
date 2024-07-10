@@ -24,7 +24,14 @@
                                     </div>
 
                                     <!-- <span class="text-body-secondary">{{post.date | date_to_string}}</span><br> -->
-                                    <span class="card-text">{{post.excerpt}}</span>
+                                    <span class="card-text">
+                                        {% if post.custom_excerpt %}
+                                            {% assign excerptParts = post.excerpt | split: "<!-- excerpt-start -->" %}
+                                            {{ excerptParts[1] | strip_newlines }}
+                                        {% else %}
+                                            {{post.excerpt}}
+                                        {% endif %}
+                                    </span>
                                     <a href="{{post.url}}" class="stretched-link" aria-label="Link to post {{post.title}}"></a>
                                 </div>
                             </div>

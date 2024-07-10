@@ -13,7 +13,12 @@ To use v1, just add `paginate: <posts per page>` to your `_config.yml`.  The pag
 If you're using v2, there are [a lot more options](https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md) you can set.  Check out atctwo.net's _config.yml to get an idea of what I used.
 
 # Front Matter options
-This theme implements a number of custom front matter options to facilitate some interesting features.
+This theme implements a number of optional custom front matter options to facilitate some interesting features.
+
+### `edit_date`
+This can be added to posts to show when the post was last edited.  It takes in a date, and results in the top of a post showing the edit date.
+
+![Screenshot of a post showing an edit date](extras/edit_date.png)
 
 ### `custom_excerpt`
 If this is set to true, it will be up to the page author to determine what gets included in `{{post.excerpt}}`.  By default the first paragraph gets included in the excerpt, but this isn't always ideal.

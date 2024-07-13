@@ -24,7 +24,7 @@ This theme is designed to be used with a paginator (either [jekyll-paginate](htt
 
 To use v1, just add `paginate: <posts per page>` to your `_config.yml`.  The paginator options are detailed on [Jekyll's website](https://jekyllrb.com/docs/pagination/).
 
-If you're using v2, there are [a lot more options](https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md) you can set.  Check out atctwo.net's _config.yml to get an idea of what I used.
+If you're using v2, there are [a lot more options](https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md) you can set.  Check out [atctwo.net's _config.yml](https://github.com/atctwo/atctwo.github.io/blob/web4/_config.yml#L73) to get an idea of what I used.
 
 ## Comments include
 There's an include file called `comments.html` where you can put a commenting engine of your choice.  It only appears at the bottom of pages which have the `enable_comments: true` front matter option.

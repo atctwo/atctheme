@@ -29,7 +29,14 @@ function apply_colour_mode()
         }
     }
 
+    // update colour selection button
     update_colour_select_btn();
+
+    // call callback on document
+    const colour_event = new CustomEvent("colour_update", {
+        detail: html.dataset.bsTheme
+    });
+    document.dispatchEvent(colour_event);
 }
 
 // automatically set the colour mode when the browser's colour preference changes

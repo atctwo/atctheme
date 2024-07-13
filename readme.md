@@ -4,7 +4,21 @@ This is a Bootstrap-based Jekyll theme that I designed for use with [my website]
 
 More details on how the theme was made can be found on [this post](https://atctwo.net/posts/2023/05/18/new-site.html) on my website.
 
-# Pagination
+# Features
+
+## Light and Dark mode
+This theme supports both a light and dark mode (implemented using Bootstrap 5's [colour modes](https://getbootstrap.com/docs/5.3/customize/color-modes/)).  There's a little theme selector at the right of the navigation bar, and you can choose between light, dark, and auto.  Auto is the default, and chooses based on the system's settings (using the [`prefers-colour-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) CSS media feature).
+
+![alt text](extras/theme_selector.png)
+
+When the user changes the theme, the `colour_update` event is raised on the document (with `event.detail` set to the current theme).  So you can respond to changes in theme using this snippet:
+```js
+document.addEventListener("colour_update", event => {
+    do_something(event.detail);
+});
+```
+
+## Pagination
 
 This theme is designed to be used with a paginator (either [jekyll-paginate](https://github.com/jekyll/jekyll-paginate) or [jekyll-paginate-v2](https://github.com/sverrirs/jekyll-paginate-v2)).
 

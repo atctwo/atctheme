@@ -1,16 +1,16 @@
 {% assign number = include.number | times: 1.0 %}
-<span class="word-count" title="{{number}} words">
+<span class="word-count" title="{{number | floor}} words">
 
     {% if number < 1000.0 %}
-        {{number}}k
+        {{number | floor}}
     {% elsif number >= 1000.0 and number < 1000000.0 %}
-        {{number | divided_by: 1000 | round: 2 }}k
+        {{number | divided_by: 1000 | round: 1 }}k
     {% elsif number >= 1000000.0 and number < 1000000000.0 %}
-        {{number | divided_by: 1000000 | round: 2 }}m
+        {{number | divided_by: 1000000 | round: 1 }}m
     {% elsif number >= 1000000000.0 and number < 1000000000000.0 %}
-        {{number | divided_by: 1000000000 | round: 2 }}b
+        {{number | divided_by: 1000000000 | round: 1 }}b
     {% else %}
-        {{number | divided_by: 1000000000000 | round: 2 }}t
+        {{number | divided_by: 1000000000000 | round: 1 }}t
     {% endif %}
 
 </span>

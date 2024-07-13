@@ -26,7 +26,10 @@ To use v1, just add `paginate: <posts per page>` to your `_config.yml`.  The pag
 
 If you're using v2, there are [a lot more options](https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md) you can set.  Check out atctwo.net's _config.yml to get an idea of what I used.
 
-# Front Matter options
+## Comments include
+There's an include file called `comments.html` where you can put a commenting engine of your choice.  It only appears at the bottom of pages which have the `enable_comments: true` front matter option.
+
+## Front Matter options
 This theme implements a number of optional custom front matter options to facilitate some interesting features.
 
 ### `edit_date`

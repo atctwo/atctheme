@@ -4,17 +4,27 @@
     <table class="post-table">
         {% for post in site.posts %}
             <tr>
-                <td>
-                    <a href="{{ post.url }}">{{ post.title }}</a>
+                <td class="icon-table-icon-container">
+                    {% if post.image %}
+                        <a href='{{post.url}}'>
+                            <img src="{{post.image}}" class="icon-table-icon img-thumbnail">
+                        </a>
+                    {% endif %}
                 </td>
-                <td class="text-body-tertiary">
-                    {{post.date | date_to_string}}
-                </td>
-                {% if post.draft %}
-                    <td class="text-body-tertiary">
-                        (draft)
-                    </td>
+    
+                <td><a href='{{post.url}}'>{{post.title}}</a></td>
+                
+                {% if post.date %}
+                    <td class="text-body-tertiary">{{post.date | date_to_long_string}}</td>
+                {% else %}
+                    <td class="text-body-tertiary">Unknown Date</td>
                 {% endif %}
+
+                <td class="text-body-tertiary">
+                    {% if post.draft %}
+                    (draft)
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
     </table>

@@ -9,7 +9,7 @@ More details on how the theme was made can be found on [this post](https://atctw
 ## Light and Dark mode
 This theme supports both a light and dark mode (implemented using Bootstrap 5's [colour modes](https://getbootstrap.com/docs/5.3/customize/color-modes/)).  There's a little theme selector at the right of the navigation bar, and you can choose between light, dark, and auto.  Auto is the default, and chooses based on the system's settings (using the [`prefers-colour-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) CSS media feature).
 
-![alt text](extras/theme_selector.png)
+![Screenshot of the theme selector](extras/theme_selector.png)
 
 When the user changes the theme, the `colour_update` event is raised on the document (with `event.detail` set to the current theme).  So you can respond to changes in theme using this snippet:
 ```js
@@ -53,3 +53,8 @@ This won't be in the excerpt either
 ```
 
 This is [implemented](https://github.com/atctwo/atctheme/blob/main/_includes/posts.html#L28-L33) using a Liquid snippet adapted from [an article by Chris Shelton](https://cjshelton.github.io/blog/2019/05/27/customising-jekyll-excerpt-start.html).
+
+### `enable_related`
+If this is set to true, up to three related posts will be shown at the bottom of the post.  If no related posts are found, then nothing will be shown.  This is implemented using Jekyll's `{{site.related_posts}}` variable (documentation is available [here](https://jekyllrb.com/docs/variables/#site-variables)).
+
+![Screenshot of related posts being shown on a post](extras/related_posts.png)

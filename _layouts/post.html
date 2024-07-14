@@ -21,3 +21,31 @@ layout: default
 <hr>
 
 {{ content }}
+
+{% if page.enable_related %}
+{% if site.related_posts.size >= 1 %}
+<hr>
+<h1>Related Posts</h1>
+<table class="related-posts icon-table">
+    {% for related_post in site.related_posts limit: 3 %}
+        <tr>
+            <td class="icon-table-icon-container">
+                {% if related_post.image %}
+                    <a href='{{related_post.url}}'>
+                        <img src="{{related_post.image}}" class="icon-table-icon img-thumbnail">
+                    </a>
+                {% endif %}
+            </td>
+
+            <td><a href='{{related_post.url}}'>{{related_post.title}}</a></td>
+            
+            {% if related_post.date %}
+                <td class="text-body-tertiary">{{related_post.date | date_to_long_string}}</td>
+            {% else %}
+                <td class="text-body-tertiary">Unknown Date</td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endif %}

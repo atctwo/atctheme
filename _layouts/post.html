@@ -3,18 +3,18 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
-<div class="post-details"><em>Published {{page.date | date_to_long_string}} by {{page.author}}</em></div>
+<div class="post-details"><span class="post-details-text">Published {{page.date | date_to_long_string}} by {{page.author}}</span></div>
 {% if page.edit_date %}
-<div class="post-details"><em>Last edited {{page.edit_date | date_to_long_string}}</em></div>
+<div class="post-details"><span class="post-details-text">Last edited {{page.edit_date | date_to_long_string}}</span></div>
 {% endif %}
 {% assign num_words = content | number_of_words %}
-<div class="post-details"><em> {% include humanise.html number = num_words %} words, {% include reading_time.html content = page.content %}</em></div>
-<div class="post-details"><em>Tags: </em>{% for tag in page.tags %}<a class="badge text-bg-info post-tag" href='/posts/tags/{{tag | replace: " ","-"}}''>{{tag}}</a> {% endfor %}</div>
+<div class="post-details"><span class="post-details-text"> {% include humanise.html number = num_words %} words, {% include reading_time.html content = page.content %}</span></div>
+<div class="post-details"><span class="post-details-text">Tags: </span>{% for tag in page.tags %}<a class="badge text-bg-info post-tag" href='/posts/tags/{{tag | replace: " ","-"}}''>{{tag}}</a> {% endfor %}</div>
 
 <br>
 
 {% if page.toc %}
-    <h1>Table of Contents</h1>
+    <h2>Table of Contents</h2>
     {% toc %}
 {% endif %}
 

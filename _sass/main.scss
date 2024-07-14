@@ -33,6 +33,9 @@ html, body, #site-container {
 .post-details {
     margin-bottom: 0.25em;
 }
+.post-details-text {
+    font-style: oblique 10deg;
+}
 
 // bootstrap override
 $container-max-widths: (

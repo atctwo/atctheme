@@ -24,8 +24,15 @@ function generate_gradient_colours(n)
 
 function header_set_gradient(element)
 {
+    // add css rule for things with animated background
+    let style = document.createElement("style")
+    style.sheet.insertRule(`.animated-gradient {background: linear-gradient(90deg, ${generate_gradient_colours(20)}); }`)
+    document.appendChild(style);
+
     // based on https://www.gradient-animator.com/
-    let header = document.querySelector(element);
-    header.style.background = `linear-gradient(90deg, ${generate_gradient_colours(20)})`;
-    header.style.backgroundSize = "2000% 2000%";
+    let headers = document.querySelectorAll(element);
+    headers.forEach(header => {
+        header.classList.add("animated-gradient");
+        header.style.backgroundSize = "2000% 2000%";
+    });
 }

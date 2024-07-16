@@ -24,6 +24,8 @@ function generate_gradient_colours(n)
 
 function header_set_gradient(element)
 {
+    console.log(element);
+
     // add css rule for things with animated background
     let style = document.createElement("style")
     document.head.appendChild(style);

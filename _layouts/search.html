@@ -88,35 +88,31 @@ layout: default
             let page = search_data[res.ref];
 
             // for each field in the index
-            let fields = Object.values(Object.values(res.matchData.metadata)[0]);
-            fields.forEach(field => {
+            let field = Object.values(Object.values(res.matchData.metadata)[0])[0]
 
-                // set title and url
-                let clone = template_search_result.content.cloneNode(true);
-                clone.getElementById("result-title").innerText = page.title;
-                clone.getElementById("result-url").href = page.url;
-                clone.getElementById("result-content").href = page.url;
+            // set title and url
+            let clone = template_search_result.content.cloneNode(true);
+            clone.getElementById("result-title").innerText = page.title;
+            clone.getElementById("result-url").href = page.url;
+            clone.getElementById("result-content").href = page.url;
 
-                console.log(res)
+            // get matching snippet
+            let matches = field.position
+            let match = matches[0];
+            let content = search_data[res.ref].content;
+            let range_lower = Math.max(match[0] - snippet_length, 0);
+            let range_upper = Math.min(match[0] + match[1] + snippet_length, content.length);
+            let slice_lower = (range_lower == 0)              ? 0 : 1;
+            let slice_upper = (range_upper == content.length) ? content.length : -1;
+            let start = (range_lower == 0)              ? "" : "...";
+            let end   = (range_upper == content.length) ? "" : "...";
 
-                // get matching snippet
-                let matches = field.position
-                let match = matches[0];
-                let content = search_data[res.ref].content;
-                let range_lower = Math.max(match[0] - snippet_length, 0);
-                let range_upper = Math.min(match[0] + match[1] + snippet_length, content.length);
-                let slice_lower = (range_lower == 0)              ? 0 : 1;
-                let slice_upper = (range_upper == content.length) ? content.length : -1;
-                let start = (range_lower == 0)              ? "" : "...";
-                let end   = (range_upper == content.length) ? "" : "...";
+            console.log(start + content.slice(range_lower, range_upper).replace(/\s+/g,' ').trim());
 
-                console.log(start + content.slice(range_lower, range_upper).replace(/\s+/g,' ').trim());
+            let snippet = start + content.slice(range_lower, range_upper).replace(/\s+/g,' ').trim().split(" ").slice(slice_lower, slice_upper).join(" ") + end;
+            clone.getElementById("result-content").innerText = snippet;
 
-                let snippet = start + content.slice(range_lower, range_upper).replace(/\s+/g,' ').trim().split(" ").slice(slice_lower, slice_upper).join(" ") + end;
-                clone.getElementById("result-content").innerText = snippet;
-
-                div_results_container.appendChild(clone);
-            });
+            div_results_container.appendChild(clone);
         }
     });
 

@@ -58,3 +58,10 @@ This is [implemented](https://github.com/atctwo/atctheme/blob/main/_includes/pos
 If this is set to true, up to three related posts will be shown at the bottom of the post.  If no related posts are found, then nothing will be shown.  This is implemented using Jekyll's `{{site.related_posts}}` variable (documentation is available [here](https://jekyllrb.com/docs/variables/#site-variables)).
 
 ![Screenshot of related posts being shown on a post](extras/related_posts.png)
+
+## Rainbow Backgrounds
+If you add the `rainbow-background` class to any element, it will be set a random pastel background colour when the page loads.  This can be used to give a pretty rainbow vibe to a page.  Internally it randomly generates an HSV colour expression, and you can specify the hue component by giving the element the `data-hue` attribute, if you want to have some control on the colour of an element.
+
+For example, on the posts page, the Tags and Archive buttons are always random, but the Atom Feed button will always be some shade of orange (where hue=27).
+
+![Screenshot of the Posts page, showing the coloured buttons](extras/rainbow-buttons.png)

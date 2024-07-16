@@ -1,0 +1,125 @@
+---
+layout: default
+---
+
+<h1>{{page.title}}</h1>
+
+{% include search_data.html %}
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+<form action="/search">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="search" name="q" class="form-control search-box" id="search-box" placeholder="Search atctwo.net" aria-label="Search">
+            <label for="search-box">Search query</label>
+        </div>
+        <button class="btn btn-primary btn-search rainbow-background" type="submit"><i class="bi bi-search"></i></button>
+    </div>
+</form>
+
+<noscript>The search feature for this site is implemented client-side, so unfortunately JavaScript is required for it to work.</noscript>
+
+<div class="list-group" id="results-container"></div>
+
+<template id="template-search-result">
+    <a id="result-url" class="search-result-url list-group-item list-group-item-action">
+        <h4 id="result-title" class="search-result-title"></h4>
+        <p id="result-content" class="search-result-content text-body-secondary"></p>
+    </a>
+</template>
+
+<style>
+    .search-result-title {
+        color: var(--bs-body-color);
+    }
+    .search-result-content {
+        color: var(--bs-body-color);
+    }
+</style>
+
+<script>
+
+    // parameters
+    const snippet_length = 64;  // how many bytes before and after matches to include snippets (before the first and last works are discarded)
+
+    // build search index
+    var idx = lunr(function() {
+        this.ref("url");
+        this.field("title");
+        // this.field("date");
+        this.field("content");
+        this.metadataWhitelist = ["position"];
+        
+        Object.values(search_data).forEach(page => {
+            this.add(page)
+        }, this);
+    });
+
+    // get search query from query params
+    const url_params = new URLSearchParams(window.location.search);
+    const query = url_params.get("q") || "";
+    console.log(`Searching site for "${query}"`);
+    document.querySelectorAll(".search-box").forEach(elem => {
+        elem.value = query;
+    });
+
+    // perform search
+    let results = idx.search(query);
+    console.log(results);
+
+    // get references to result container and template
+    const div_results_container = document.getElementById("results-container");
+    const template_search_result = document.getElementById("template-search-result");
+
+    // check if there are no results
+    if (results.length == 0) {
+        div_results_container.innerHTML = "<h2>No results found...</h2><p>Unfortunately, no results were found for this search :(</p>"
+    }
+
+    // if you search for nothing, then it will return every page, each with a score of 0.
+    // so show a message prompting the user to search for something
+    if (query == "") {
+        div_results_container.innerHTML = "<h2>Welcome to the search page!</h2></p>Enter something in to the search bar to search for it on this website</p>"
+    }
+
+    // for each result
+    results.forEach(res => {
+        if (res.score > 0) {
+            let page = search_data[res.ref];
+
+            // for each field in the index
+            let fields = Object.values(Object.values(res.matchData.metadata)[0]);
+            fields.forEach(field => {
+
+                // set title and url
+                let clone = template_search_result.content.cloneNode(true);
+                clone.getElementById("result-title").innerText = page.title;
+                clone.getElementById("result-url").href = page.url;
+                clone.getElementById("result-content").href = page.url;
+
+                console.log(res)
+
+                // get matching snippet
+                let matches = field.position
+                let match = matches[0];
+                let content = search_data[res.ref].content;
+                let range_lower = Math.max(match[0] - snippet_length, 0);
+                let range_upper = Math.min(match[0] + match[1] + snippet_length, content.length);
+                let slice_lower = (range_lower == 0)              ? 0 : 1;
+                let slice_upper = (range_upper == content.length) ? content.length : -1;
+                let start = (range_lower == 0)              ? "" : "...";
+                let end   = (range_upper == content.length) ? "" : "...";
+
+                console.log(start + content.slice(range_lower, range_upper).replace(/\s+/g,' ').trim());
+
+                let snippet = start + content.slice(range_lower, range_upper).replace(/\s+/g,' ').trim().split(" ").slice(slice_lower, slice_upper).join(" ") + end;
+                clone.getElementById("result-content").innerText = snippet;
+
+                div_results_container.appendChild(clone);
+            });
+        }
+    });
+
+</script>
+
+<!-- <p style="position: absolute; bottom: 0;">Searching on this site is done on the client-side, using Lunr.js!</p> -->

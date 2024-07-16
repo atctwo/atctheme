@@ -26,6 +26,11 @@ To use v1, just add `paginate: <posts per page>` to your `_config.yml`.  The pag
 
 If you're using v2, there are [a lot more options](https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md) you can set.  Check out [atctwo.net's _config.yml](https://github.com/atctwo/atctwo.github.io/blob/web4/_config.yml#L73) to get an idea of what I used.
 
+## Client-side Search
+This theme includes a client-side site search!  Liquid templates are used to generate a JSON object containing all the text in the website, and this is fed to [Lunr.js](https://lunrjs.com/), which searches each page and returns a list of pages with matches.  The search page is implemented as a layout called `search`, and there is a search bar built into the navbar at the top of every page, behind a toggle button (for now this form navigates to `/search/`).
+
+![Screenshot of the results of the search "jekyll"](extras/search_results.png)
+
 ## Comments include
 There's an include file called `comments.html` where you can put a commenting engine of your choice.  It only appears at the bottom of pages which have the `enable_comments: true` front matter option.
 

@@ -12,10 +12,30 @@
     text-decoration: none;
 }
 
-#header-colour-select-dropdown {
+#header-search-box {
     margin-left: auto;
 }
 
 #header-inner-nav {
     width: 100%;
+}
+
+#header-search-form {
+    width: 300px;
+}
+
+@media (max-width: 767px) {
+    #header-search-box {
+        width: 100%;
+    }
+    #header-search-form {
+        width: calc(100vw - 2rem);
+    }
+    #header-search-collapse {
+        margin-left: 0;
+    }
+    #header-search-collapse:not(.show):not(.collapsing) {
+        display: block;
+        visibility: hidden;
+    }
 }

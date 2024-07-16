@@ -21,16 +21,30 @@
                 </span>
                 {% endif %}
 
+                <div id="header-search-box">
+                    <div class="collapse collapse-horizontal" id="header-search-collapse">
+                        <form action="/search" class="d-flex" id="header-search-form" role="search">
+                            <div class="input-group">
+                                <input type="search" name="q" class="form-control search-box" id="search-box" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-primary btn-search rainbow-background" type="submit"><i class="bi bi-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="dropdown" id="header-colour-select-dropdown">
+                    <button class="btn" type="button" data-bs-theme="light" data-bs-toggle="collapse" data-bs-target="#header-search-collapse">
+                        <i class="bi bi-search"></i>
+                    </button>
                     <button class="btn dropdown-toggle" id="header-color-select-btn" type="button" data-bs-toggle="dropdown" data-bs-theme="light" aria-expanded="false" aria-label="Select Colour Mode">
                         <i class="bi bi-brightness-alt-high-fill"></i>
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-end">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li><h6 class="dropdown-header">Colour Mode</h6></li>
                         <li><a class="dropdown-item" onclick="set_colour_mode('light');" href="#"><i class="bi bi-brightness-high-fill"></i> Light</a></li>
                         <li><a class="dropdown-item" onclick="set_colour_mode('dark');" href="#"><i class="bi bi-moon-stars-fill"></i> Dark</a></li>
                         <li><a class="dropdown-item" onclick="set_colour_mode('auto');" href="#"><i class="bi bi-brightness-alt-high-fill"></i> Automatic</a></li>
-                      </ul>
+                    </ul>
                 </div>
             </div>
         </div>

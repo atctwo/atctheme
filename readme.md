@@ -70,3 +70,10 @@ If you add the `rainbow-background` class to any element, it will be set a rando
 For example, on the posts page, the Tags and Archive buttons are always random, but the Atom Feed button will always be some shade of orange (where hue=27).
 
 ![Screenshot of the Posts page, showing the coloured buttons](extras/rainbow-buttons.png)
+
+# Credits
+This theme uses a few assets provided by other people:
+- Icons were provided by [Bootstrap Icons](https://icons.getbootstrap.com/)
+- The header font is [Varela Round](https://fonts.google.com/specimen/Varela+Round) and the body font is [Nunito](https://fonts.google.com/specimen/Nunito?query=nunito)
+- The search feature is implemented using [Lunr.js](https://lunrjs.com/)
+- The reading time indicator was provided by [Jekyll Codex](https://jekyllcodex.org/without-plugin/reading-time-indicator/#)

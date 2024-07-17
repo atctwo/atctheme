@@ -1,6 +1,6 @@
 # atctheme
 
-This is a Bootstrap-based Jekyll theme that I designed for use with [my website](atctwo.net).  I've published it on GitHub in case anyone else wants to use it, or is curious how it works.
+This is a Bootstrap-based Jekyll theme that I designed for use with [my website](https://atctwo.net).  I've published it on GitHub in case anyone else wants to use it, or is curious how it works.  The [source for my website](https://github.com/atctwo/atctwo.github.io) is also available on GitHub.
 
 More details on how the theme was made can be found on [this post](https://atctwo.net/posts/2023/05/18/new-site.html) on my website.
 

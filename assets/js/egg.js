@@ -1,3 +1,9 @@
+// this script contains all the code to make the various easter eggs work!
+// make sure you're ok with spoilers!
+
+//-----------------------------------------------
+// Netscape Cube
+//-----------------------------------------------
 
 let cube_event_listener_added = false;
 function netscape_cube()
@@ -12,14 +18,16 @@ function netscape_cube()
     }
 }
 
+
+//-----------------------------------------------
+// Site Title Hover
+//-----------------------------------------------
+
 function getNotPastelColor(){ 
     return "hsl(" + 360 * Math.random() + ',' +
                (75 + 25 * Math.random()) + '%,' + 
                (25 + 25 * Math.random()) + '%)'
 }
-
-
-// let title_colour = "#000000";
 
 function title_hover()
 {
@@ -33,3 +41,36 @@ function title_unhover()
     let title = document.getElementById("site-header-brand");
     title.style.removeProperty("color");
 }
+
+
+//-----------------------------------------------
+// Rainbow Background Party
+//-----------------------------------------------
+
+let konami_step = 0;
+let konami_code = [
+    "ArrowUp",      // ↑
+    "ArrowUp",      // ↑
+    "ArrowDown",    // ↓
+    "ArrowDown",    // ↓
+    "ArrowLeft",    // ←
+    "ArrowRight",   // →
+    "ArrowLeft",    // ←
+    "ArrowRight",   // →
+    "b",            // B
+    "a"             // A
+];
+
+document.addEventListener("keydown", event => {
+    
+    // check sequence
+    if (event.key == konami_code[konami_step]) konami_step += 1;
+    else konami_step = 0;
+
+    // check if sequence has been completed
+    if (konami_step == konami_code.length) {
+        setup_random_colours();
+        konami_step = konami_code.length -1;
+    }
+
+})

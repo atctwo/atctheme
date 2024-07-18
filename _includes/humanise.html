@@ -1,5 +1,5 @@
 {% assign number = include.number | times: 1.0 %}
-<span class="word-count" title="{{number | floor}} words">
+<span class="word-count" title="{{number | floor}} words" data-bs-toggle="tooltip">
 
     {% if number < 1000.0 %}
         {{number | floor}}

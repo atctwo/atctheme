@@ -74,6 +74,6 @@ For example, on the posts page, the Tags and Archive buttons are always random, 
 # Credits
 This theme uses a few assets provided by other people:
 - Icons were provided by [Bootstrap Icons](https://icons.getbootstrap.com/)
-- The header font is [Varela Round](https://fonts.google.com/specimen/Varela+Round) and the body font is [Nunito](https://fonts.google.com/specimen/Nunito?query=nunito)
+- The header font is [Varela Round](https://fonts.google.com/specimen/Varela+Round), the body font is [Nunito](https://fonts.google.com/specimen/Nunito?query=nunito), and the monospace font is [Space Mono](https://fonts.google.com/specimen/Space+Mono)
 - The search feature is implemented using [Lunr.js](https://lunrjs.com/)
 - The reading time indicator was provided by [Jekyll Codex](https://jekyllcodex.org/without-plugin/reading-time-indicator/#)

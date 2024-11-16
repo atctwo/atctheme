@@ -21,6 +21,10 @@ html, body, #site-container {
     gap: 20px;
 }
 
+body {
+    transition: background-color 0.2s;
+}
+
 #site-main {
     flex-grow: 1;
 }

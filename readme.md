@@ -71,6 +71,8 @@ For example, on the posts page, the Tags and Archive buttons are always random, 
 
 ![Screenshot of the Posts page, showing the coloured buttons](extras/rainbow-buttons.png)
 
+You can also set the `rainbow-border` or `rainbow-text` classes, to just get a random border or text colour respectively.
+
 # Credits
 This theme uses a few assets provided by other people:
 - Icons were provided by [Bootstrap Icons](https://icons.getbootstrap.com/)

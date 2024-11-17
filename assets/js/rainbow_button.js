@@ -11,10 +11,11 @@
  * 
  * @param {*} elements a query selector to determine which elements to set the colour of
  * @param {*} fg whether to set the foreground colour
- * @param {*} bg whether to set the background and border colours
+ * @param {*} bg whether to set the background colour
+ * @param {*} border whether to set the border colour
  * @param {*} theme specify which theme to contrast with; if this is not provided then the current theme will be used
  */
-function set_random_colour(elements, fg, bg, theme=undefined) {
+function set_random_colour(elements, fg, bg, border, theme=undefined) {
     let elems = document.querySelectorAll(elements);
     elems.forEach(elem => {
 
@@ -36,16 +37,20 @@ function set_random_colour(elements, fg, bg, theme=undefined) {
         }
         if (bg) {
             elem.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
-            elem.style.borderColor = `hsl(${h}, ${s}%, ${l}%)`;
             elem.style.color = text;
+        }
+        if (border) {
+            elem.style.borderColor = `hsl(${h}, ${s}%, ${l}%)`;
         }
 
     });
 }
 
 function setup_random_colours() {
-    set_random_colour(".rainbow-background", false, true, "dark");
-    set_random_colour(":not(a, pre) > code", true, false);
+    set_random_colour(".rainbow-background", "bw", true, true, "dark");
+    set_random_colour(".rainbow-border",     false, false, true, "dark");
+    set_random_colour(".rainbow-text",       true, false, false, "dark");
+    set_random_colour(":not(a, pre) > code", true, false, false);
 }
 
 document.addEventListener("DOMContentLoaded", setup_random_colours)

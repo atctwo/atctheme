@@ -15,10 +15,36 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav" id="header-inner-nav">
                 {% for entry in site.data.header_entries %}
-                    <a class="nav-link {% if page.url == entry.href %} active {% endif %}" 
+                    
+                    {% comment %}
+                        The following snippet of Hell Code exists merely to check if
+                        the current page URL _starts with_ the url of the nav item.
+                        There's no "startswith" operator in Liquid, so it splits
+                        both into an array and checks if each element at the start
+                        match.  And it also has checks for the if the url is the 
+                        home page ("/").  aaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                    {% endcomment %}
+
+                    {% if page.url == "/" and entry.href == "/" %}
+                        {% assign is_active = true %}
+                    {% elsif page.url contains entry.href and entry.href != "/" %}
+                        {% assign is_active = true %}
+                        {% assign url_parts  = page.url   | split: "/" %}
+                        {% assign href_parts = entry.href | split: "/" %}
+                        {% for part in href_parts %}
+                            {% if part != url_parts[forloop.index0] %}
+                                {% assign is_active = false %}
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {% assign is_active = false %}
+                    {% endif %}
+
+                    <a class="nav-link {% if is_active %} active {% endif %}" 
                        href={{entry.href}} 
-                       {% if page.url == entry.href %} aria-current="page" {% endif %}
-                        >{{entry.name}}</a>
+                       {% if is_active %} aria-current="page" {% endif %}
+                    >{{entry.name}}</a>
+
                 {% endfor %}
 
                 {% if site.theme_debug %}

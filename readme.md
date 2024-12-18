@@ -73,6 +73,30 @@ For example, on the posts page, the Tags and Archive buttons are always random, 
 
 You can also set the `rainbow-border` or `rainbow-text` classes, to just get a random border or text colour respectively.
 
+## Admonitions
+This theme has a mechanism to include admonitions.  It provides two HTML includes: one to start an admonition `<div>` and one to close it.  The include tag supports a few parameters, including the optional `title` to specify a title.  You can specify a `type` parameter to decide how it will be rendered.  Types include:
+- `info`
+- `tip`
+- `important`
+- `warning`
+- `danger`
+- `success`
+- `fail`
+
+![Screenshot of how each admonition is rendered](extras/admomitions.png)
+
+For example:
+
+```html
+{% include admonition.html type="tip" title="Tip" %}
+
+<p>You can hurt yourself if you run with scissors</p>
+
+{% include admonition_end.html %}
+```
+
+Please note that the content inside the admonition is parsed as HTML rather than Markdown.
+
 # Credits
 This theme uses a few assets provided by other people:
 - Icons were provided by [Bootstrap Icons](https://icons.getbootstrap.com/)

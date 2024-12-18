@@ -1,0 +1,36 @@
+
+{% case include.type %}
+    {% when "tip" %}
+        {% assign type = "success" %}
+        {% assign icon = '<i class="bi bi-lightbulb-fill"></i>' %}
+    {% when "info" %}
+        {% assign type = "info" %}
+        {% assign icon = '<i class="bi bi-info-circle-fill"></i>' %}
+    {% when "important" %}
+        {% assign type = "primary" %}
+        {% assign icon = '<i class="bi bi-exclamation-triangle-fill"></i>' %}
+    {% when "warning" %}
+        {% assign type = "warning" %}
+        {% assign icon = '<i class="bi bi-exclamation-triangle-fill"></i>' %}
+    {% when "danger" %}
+        {% assign type = "danger" %}
+        {% assign icon = '<i class="bi bi-exclamation-triangle-fill"></i>' %}
+    {% when "success" %}
+        {% assign type = "success" %}
+        {% assign icon = '<i class="bi bi-emoji-smile-fill"></i>' %}
+    {% when "fail" %}
+        {% assign type = "danger" %}
+        {% assign icon = '<i class="bi bi-emoji-frown-fill"></i>' %}
+    {% else %}
+        {% assign type = "primary" %}
+        {% assign icon = "" %}
+{% endcase %}
+
+<div class="alert alert-{{type}} admonition" role="alert">
+
+    <h5 class="alert-heading">
+        {% if icon %} {{icon}} {% endif %}
+        {% if include.title %}
+            {{include.title}}
+        {% endif %}
+    </h5>

@@ -28,9 +28,11 @@
 
 <div class="alert alert-{{type}} admonition" role="alert">
 
-    <h5 class="alert-heading">
-        {% if icon %} {{icon}} {% endif %}
-        {% if include.title %}
-            {{include.title}}
-        {% endif %}
-    </h5>
+    <div class="no_toc_section">
+        <h5 class="alert-heading">
+            {% if icon %} {{icon}} {% endif %}
+            {% if include.title %}
+                {{include.title}}
+            {% endif %}
+        </h5>
+    </div>
